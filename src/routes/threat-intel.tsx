@@ -24,11 +24,11 @@ export const Route = createFileRoute("/threat-intel")({
 });
 
 const sectors = [
-  { label: "Financial services", state: "Elevated", bar: "w-3/4", tone: "accent" },
-  { label: "Logistics & transport", state: "Guarded", bar: "w-1/2", tone: "safe" },
-  { label: "Energy & utilities", state: "Watch", bar: "w-2/3", tone: "watch" },
-  { label: "NGO & missions", state: "Guarded", bar: "w-2/5", tone: "safe" },
-  { label: "Retail & hospitality", state: "Elevated", bar: "w-7/12", tone: "accent" },
+  { label: "Financial services", state: "Elevated", bar: "w-3/4", tone: "accent" as const },
+  { label: "Logistics & transport", state: "Guarded", bar: "w-1/2", tone: "safe" as const },
+  { label: "Energy & utilities", state: "Watch", bar: "w-2/3", tone: "watch" as const },
+  { label: "NGO & missions", state: "Guarded", bar: "w-2/5", tone: "safe" as const },
+  { label: "Retail & hospitality", state: "Elevated", bar: "w-7/12", tone: "accent" as const },
 ];
 
 const advisories = [
@@ -49,11 +49,11 @@ const advisories = [
   },
 ];
 
-const toneClass: Record<string, { text: string; bg: string }> = {
+const toneClass = {
   accent: { text: "text-accent", bg: "bg-accent" },
   safe: { text: "text-safe", bg: "bg-safe" },
   watch: { text: "text-watch", bg: "bg-watch" },
-};
+} as const;
 
 function ThreatIntelPage() {
   return (
