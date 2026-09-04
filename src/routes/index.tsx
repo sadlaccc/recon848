@@ -100,20 +100,20 @@ function Index() {
             </div>
             <div className="mt-5 space-y-3">
               {[
-                { label: "Financial", state: "Elevated", color: "accent", w: "w-3/4" },
-                { label: "Logistics", state: "Guarded", color: "safe", w: "w-1/2" },
-                { label: "Energy", state: "Watch", color: "watch", w: "w-2/3" },
+                { label: "Financial", state: "Elevated", text: "text-accent", bar: "bg-accent", w: "w-3/4" },
+                { label: "Logistics", state: "Guarded", text: "text-safe", bar: "bg-safe", w: "w-1/2" },
+                { label: "Energy", state: "Watch", text: "text-watch", bar: "bg-watch", w: "w-2/3" },
               ].map((row) => (
                 <div key={row.label}>
                   <div className="flex justify-between text-[11px]">
                     <span className="text-muted-foreground">{row.label}</span>
-                    <span className={`font-mono text-${row.color}`}>
+                    <span className={`font-mono ${row.text}`}>
                       {row.state}
                     </span>
                   </div>
                   <div className="mt-1.5 h-1.5 rounded-full bg-secondary">
                     <div
-                      className={`h-full ${row.w} rounded-full bg-${row.color}`}
+                      className={`h-full ${row.w} rounded-full ${row.bar}`}
                     />
                   </div>
                 </div>
@@ -154,21 +154,21 @@ function Index() {
               title: "Executive Protection",
               body: "Close-protection teams and route planning for leadership in high-risk corridors.",
               tag: "Operational",
-              color: "accent",
+              tint: "bg-accent/10 outline-accent/30", text: "text-accent",
             },
             {
               n: "02",
               title: "Cyber & Physical Recon",
               body: "Penetration, surveillance hardening, and digital-threat mapping for sites.",
               tag: "Technical",
-              color: "safe",
+              tint: "bg-safe/10 outline-safe/30", text: "text-safe",
             },
             {
               n: "03",
               title: "Risk Advisory",
               body: "Country risk briefs, crisis response, and contingency planning for expansion.",
               tag: "Strategic",
-              color: "watch",
+              tint: "bg-watch/10 outline-watch/30", text: "text-watch",
             },
           ].map((c) => (
             <div
@@ -176,16 +176,16 @@ function Index() {
               className="glass group rounded-2xl p-6 transition hover:bg-card"
             >
               <div
-                className={`grid size-12 place-items-center rounded-xl bg-${c.color}/10 outline-1 outline-${c.color}/30`}
+                className={`grid size-12 place-items-center rounded-xl outline-1 ${c.tint}`}
               >
-                <span className={`font-mono text-lg text-${c.color}`}>{c.n}</span>
+                <span className={`font-mono text-lg ${c.text}`}>{c.n}</span>
               </div>
               <h3 className="mt-5 font-display text-xl font-medium">{c.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {c.body}
               </p>
               <p
-                className={`mt-4 font-mono text-[11px] uppercase tracking-[0.15em] text-${c.color}`}
+                className={`mt-4 font-mono text-[11px] uppercase tracking-[0.15em] ${c.text}`}
               >
                 {c.tag}
               </p>
